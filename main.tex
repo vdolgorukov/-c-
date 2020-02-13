@@ -1,0 +1,710 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}
+\usepackage{tikz} 
+\usetikzlibrary{arrows}
+\definecolor{HSEblue}{cmyk}{1,0.66,0,0.02}
+\tikzset{modal/.style={>=stealth',shorten >=1pt,auto, node distance=1.5cm, thick},
+         world/.style={circle,draw,minimum size=1.5cm,fill=HSEblue!10},
+         worldr/.style={circle,draw,minimum size=1.5cm,fill=red!15},
+         worldo/.style={circle,draw,minimum size=1.5cm,fill=orange!15},
+         worldg/.style={circle,draw,minimum size=1.5cm ,fill=green!15},
+         point/.style={circle,draw,inner sep=0.5mm,fill=black},
+         n/.style={circle,draw=none,minimum size=1.6cm},
+         n1/.style={draw=none},
+         reflexive above/.style={->,loop,looseness=6,in=110,out=70},
+         reflexive below/.style={->,loop,looseness=7,in=240,out=300},
+         reflexive left/.style={->,loop,looseness=6,in=160 ,out=200},
+         reflexive right/.style={->,loop,looseness=6,in=20,out=340}}
+\tikzstyle{worldm}=[circle,draw,minimum size=0.5cm,fill=HSEblue!1]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{exercise}[theorem]{Упражнение}
+\newcommand{\M}{\mathcal{M}}
+
+\title{Аспекты неклассических логик: упражнения}
+\date{\today}
+\author{В.В.~Долгоруков (НИУ ВШЭ)}
+
+\begin{document}
+
+\maketitle
+
+\section{Модальная логика}
+\subsection{Модальные исчисления}
+\begin{exercise}
+Докажите в исчислении $K$ следующие теоремы:
+\begin{multicols}{2}
+\begin{enumerate}
+  \item $\Box (p \wedge q) \to \Box q$
+  \item $\Box p \to \Box (p \vee q)$
+  \item $\Box (p \wedge q) \to (\Box p \wedge \Box q)$
+  \item $(\Box p \wedge \Box q) \to \Box (p \wedge q)$
+  \item $\Diamond (p \lor q) \equiv (\Diamond p \vee \Diamond q)$
+  \item $(\Box p \to \Diamond q) \equiv \Diamond (p \to q)$
+  \item $\Diamond (p \wedge q) \to \Diamond p$
+
+  \item $\Box (p \to q) \to (\Diamond p \to \Diamond q)$
+\end{enumerate}	
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}
+Докажите в исчислении $KT$ следующие теоремы:
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $\Box \Box p \to \Box p$
+		\item $\Box p \to \Diamond q$
+		\item $\neg \Box \bot$
+		\item $\Diamond (p \to \Box p)$
+	\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}
+Докажите в исчислении $S4$ следующие теоремы:
+\begin{multicols}{3}
+	\begin{enumerate}
+		\item $\Box \Box p \equiv \Box p$
+		\item $\Diamond \Diamond p \equiv \Diamond p$
+		\item $\Box^n p \equiv \Box p$\footnote{Здесь степень означает, что оператор повторяется $n$ раз. Например, $\Box^3:= \Box \Box \Box$.}
+		\item  $\Diamond^n p \equiv \Diamond p$
+		\item $\Box p \to \Box \Diamond \Box p $
+		\item $\Diamond \Box \Diamond p \to \Diamond p$
+		\item $\Box \Diamond \Box p \to \Box \Diamond p$
+	   \item $\Box \Diamond \Box p \to \Diamond \Box p$
+		\item $\Diamond \Box p \to \Diamond \Box \Diamond p$
+	\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}
+	Докажите, что в $S4$ <<четырехэтажные>> модальности $\Box \Diamond \Box \Diamond$ и $\Diamond \Box \Diamond \Box$ редуцируются к более простым.
+\end{exercise}
+
+\begin{exercise}
+	В каких логических отношениях находятся следующие модальности в логике $S4$: $\Box \Diamond \Box, \Diamond \Box \Diamond, \Box \Diamond, \Diamond \Box, \Box, \Diamond$? Докажите. 
+\end{exercise}
+
+\begin{exercise}[*] Докажите следующие теоремы:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\vdash_{KT5} p \to \Box \Diamond p$
+	\item $\vdash_{KT5} \Box p \to \Box \Box p$
+	\item $\vdash_{KT4B} \Diamond p \to \Box \Diamond p$
+	\item $\vdash_{KB4} \Diamond p \to \Box \Diamond p $
+	\item $\vdash_{KB5} \Box p \to \Box \Box p $
+    \item $\vdash_{KD4B} \Diamond p \to \Box \Diamond p$
+    \item $\vdash_{KD5B} \Diamond p \to \Box \Diamond p$
+    \item $\vdash_{K5} \Box (\Box p \vee q ) \to (\Box p \vee \Box q)$
+    \item $\vdash_{K5} (\Diamond p \wedge \Diamond q) \to \Diamond (\Diamond p \wedge q) $
+    \item $\vdash_{S5} \Box (\Box p \vee q ) \equiv (\Box p \vee \Box q)$
+    \item $\vdash_{S5} (\Diamond p \wedge \Diamond q) \equiv \Diamond (\Diamond p \wedge q) $
+    \item $\vdash_{K4} \Box (\Diamond p \vee q ) \to (\Diamond p \vee \Box q)$
+    \item $\vdash_{K4} (\Box p \wedge \Diamond q) \to \Diamond (\Box p \wedge q) $
+    \item $\vdash_{S5} \Box (\Diamond p \vee q ) \equiv (\Diamond p \vee \Box q)$
+    \item $\vdash_{S5} (\Box p \wedge \Diamond q) \equiv \Diamond (\Box p \wedge q) $
+    \item $\vdash_{S5} \Box (\Box p \to q) \vee \Box (\Box q \to p)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}[**]
+Рассмотрим логику 
+\begin{center}
+$S4.3 = S4 + (\Box (\Box p \vee q) \wedge \Box (p\vee \Box q)) \to (\Box p \vee \Box q) $.	
+\end{center}
+
+ Докажите, что 
+$\vdash_{S4.3} \Diamond \Box p \to \Box \Diamond p$.
+\end{exercise}
+
+
+\begin{exercise}[***] Логика Гёделя-Лёба ($GL$) получается добавлением к исчислению $K$ аксиомной схемы $\Box (\Box \varphi \to \varphi) \to \Box \varphi$. Докажите, что  $\vdash_{GL} \Box p \to \Box \Box p$.\footnote{ Задачи с *** предполагают, что на поиск решения может уйти много времени. Например, по поводу этой конкретной задачи в одном известном учебнике написано следующее: <<This exercise is only for readers who like syntactical manipulations and have a lot of time to spare>>, см.: \textit{Venema Y., Rijke M. de,  Blackburn P.} Modal Logic. Cambridge: Cambridge University Press, 2010. P.~37.}
+\end{exercise}
+
+\begin{exercise}[***] Докажите следующие теоремы в логике $K4$:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\Box \Diamond \Diamond p \equiv \Box \Diamond p$
+\item $\Diamond \Box \Box p \equiv \Diamond \Box \Box p$
+\item $\Box \Diamond p \equiv \Box \Diamond \Box \Diamond p$
+\item $\Diamond \Box p \equiv \Diamond \Box \Diamond \Box p$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+	
+\begin{exercise}[***]
+	Докажите, что в  $K5$ все <<трехэтажные>> модальности сводятся к <<двухэтажным>>. 	
+\end{exercise}
+
+\subsection{Семантика Крипке}
+
+
+\begin{exercise} Укажите какие формулы выполняются в каких мирах в модели $\M_1$ (см.: Рис.\ref{fig:1}).\footnote{Онлайн-тренажер с аналогичными упражнениями тут: \\  \url{http://pacuit.io/modal/tutorial/}.}
+
+\begin{figure}[hbt]
+\caption{Модель $\M_1$} \label{fig:1}
+\begin{multicols}{2}
+\begin{tikzpicture}[modal, node distance=3.5cm]
+		\node[world] (1) [label=below left:{$w_1$}]{$p$};
+		\node[world] (2) [above right of=1] [label=below right:{$w_2$}]{$p, q$};
+		\node[world] (3) [right of=1] [label=below right:{$w_3$}]{$p$};
+		\node[world] (4) [below right of=1] [label=below right:{$w_4$}]{$q$};	
+		\path[->]    (1) edge  (2);
+		\path[->]    (1) edge  (3);
+		\path[->]    (1) edge  (4);
+		\path[->]    (4) edge  (3);
+    	\path[reflexive right]    (2) edge  (2);
+\end{tikzpicture}
+
+\begin{tabular}{c|c|c|c|c}
+ &  $w_1$ & $w_2$ & $w_3$ & $w_4$  \\ \hline
+$\Box p$ &  &  &  &  \\ \hline
+$\Diamond p$ &  &  &  &  \\ \hline
+$\Box p \wedge \Diamond q$ &  &  &  &  \\ \hline
+$\neg \Box (p\to q)$ &  &  &  &  \\ \hline
+$ (p \vee \Diamond q)$ &  &  &  &  \\ \hline
+$\Diamond \Diamond p$ &  &  &  &  \\ \hline
+$\Box (p \vee q)$ &  &  &  &  \\ \hline
+$\Diamond (p \to q)$ &  &  &  &  \\ \hline
+$\Box \bot$ &  &  &  &  \\ \hline
+$\Diamond \top $ &  &  &  & \\ \hline
+$\Diamond \Box \bot$ &  &  &  & 
+\end{tabular}
+\end{multicols}
+\end{figure}  
+
+\end{exercise}
+
+
+\begin{exercise} Укажите какие формулы выполняются в каких мирах в модели $\M_2$ (см.: Рис.\ref{fig:2}).
+
+\begin{figure}[hbt]
+\caption{Модель $\M_2$} \label{fig:2}
+\begin{multicols}{2}
+
+\begin{tikzpicture}[modal, node distance=3.5cm]
+		\node[world] (1) [label=below left:{$w_1$}]{};
+		\node[world] (2) [above right of=1] [label=below right:{$w_2$}]{$p$};
+		\node[world] (3) [right of=1] [label=below right:{$w_3$}]{$p,q$};
+		\node[world] (4) [below right of=1] [label=below right:{$w_4$}]{$q,r$};	
+		\path[->]    (1) edge  (2);
+		\path[->]    (3) edge  (2);
+		\path[->]    (1) edge  (4);
+		\path[->]    (4) edge  (3);
+\end{tikzpicture}
+
+\begin{tabular}{c|c|c|c|c}
+ &  $w_1$ & $w_2$ & $w_3$ & $w_4$  \\ \hline
+$p \to q$ &  &  &  &  \\ \hline
+$\Diamond (p \to q)$ &  &  &  &  \\ \hline
+$\Box p$ &  &  &  &  \\ \hline
+$\Diamond (p \wedge q)$ &  &  &  &  \\ \hline
+$\Diamond p \wedge q$ &  &  &  &  \\ \hline
+$\Box (p \vee r)$ &  &  &  &  \\ \hline
+$\Diamond \Box \Diamond p$ &  &  &  &  \\ \hline
+$\Box \Diamond (p \vee \neg q)$ &  &  &  &  \\ \hline
+$\Diamond (p \to \Box q)$ &  &  &  &  \\ \hline
+$\Diamond \Box \bot$ &  &  &  &  \\ \hline
+$\Diamond \Diamond \Box \bot$ &  &  &  &  
+\end{tabular}
+\end{multicols}
+\end{figure}
+\end{exercise}
+
+
+\begin{exercise} Укажите какие формулы выполняются в каких мирах в модели $\M_3$ (см.: Рис.\ref{fig:3}).
+
+\begin{figure}[hbt]
+\caption{Модель $\M_3$}  \label{fig:3}
+\begin{multicols}{2}
+\begin{tikzpicture}[modal, node distance=3.5cm]
+		\node[world] (1) [label=below left:{$w_1$}]{};
+		\node[world] (2) [above right of=1] [label=below right:{$w_2$}]{$p$};
+		\node[world] (3) [right of=1] [label=below right:{$w_3$}]{$p,q$};
+		\node[world] (4) [below right of=1] [label=below right:{$w_4$}]{$q,r$};	
+		\path[<-]   (1) edge  (2);
+		\path[<-]    (3) edge  (2);
+		\path[->]    (1) edge  (4);
+		\path[->]    (1) edge  (3);
+		\path[<->]    (4) edge  (3);
+\end{tikzpicture}
+\begin{tabular}{c|c|c|c|c}
+ &  $w_1$ & $w_2$ & $w_3$ & $w_4$  \\ \hline
+$\Box \Box r$ &  &  &  & \\ \hline
+$\Box (p \equiv q)$ &  &  &  & \\ \hline
+$\Box \Diamond (p \vee \Diamond q)$ &  &  &  &  \\ \hline
+$\Diamond \Box \Diamond p$ &  &  &  &  \\ \hline
+$\Box \Diamond (q \vee \neg p)$ &  &  &  &  \\ \hline
+$\Diamond (p \to \Diamond q)$ &  &  &  &  \\ \hline
+$\Diamond \Diamond \Diamond  \top $ &  &  &  &  \\ \hline
+$\Diamond \Diamond \Box p$ &  &  &  &  \\ \hline
+$\Diamond \Diamond \Diamond \Box q$ &  &  &  & 
+\end{tabular}
+\end{multicols}
+\end{figure}
+\end{exercise}
+
+
+\begin{exercise} Найдите формулу, которая различает модели $(\M_4, w_1)$ и $(\M_5, w_1)$. См.: Рис.\ref{fig:4}.
+\begin{figure}[hbt] \caption{Модели $(\M_4,w_1)$ и $(\M_5, w_1)$} \label{fig:4} 	
+\begin{multicols}{2}
+ \begin{tikzpicture}[modal, node distance=3.5cm]
+		\node[world] (1) [label=below:{$w_1$}]{$p$};
+		\node[world] (2) [right of=1] [label=below:{$w_2$}]{$p$};
+		\path[->]    (1) edge  (2);
+		\node[world] (12) [right of=2] [label=below:{$w_1$}]{$p$};
+		\node[world] (22) [right of=12] [label=below:{$w_2$}]{$p$};
+		\path[->]    (12) edge  (22);
+		\path[reflexive above]    (22) edge  (22);
+\end{tikzpicture}
+\end{multicols}	
+\end{figure}
+\end{exercise}
+
+\begin{exercise} Найдите формулу, которая различает модели $(\M_6, w_1)$ и $(\M_7, w_1)$. См.: Рис.\ref{fig:5}.
+\begin{figure}[hbt] \caption{Модели $(\M_6,w_1)$ и $(\M_7, w_1)$} \label{fig:5} 	
+\begin{multicols}{2}
+ \begin{tikzpicture}[modal, node distance=3.5cm]
+		\node[world] (1) [label=below right:{$w_1$}]{$p$};
+		\node[world] (2) [right of=1] [label=below right:{$w_2$}]{$p$};
+		\node[world] (3) [below of=1] [label=below right:{$w_2$}]{$p$};
+		\node[world] (12) [right of=2] [label=below left:{$w_1$}]{$p$};
+		\node[world] (22) [right of=12] [label=below left:{$w_2$}]{$p$};
+		\node[world] (32) [below of=22] [label=below left:{$w_3$}]{$p$};
+		\path[->]    (1) edge  (2);
+		\path[->]    (1) edge  (3);
+		\path[->]    (12) edge  (22);
+		\path[->]    (22) edge  (32);
+\end{tikzpicture}
+\end{multicols}	
+\end{figure}
+\end{exercise}
+
+\begin{exercise}
+Постройте модели для следующих формул в логике $K$:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\Diamond p \wedge \Diamond q \wedge \neg \Diamond (p \wedge q)$
+	\item $\Box p \wedge \neg \Box \Box p$
+	\item $\Box p \wedge \neg p$
+	\item $p \wedge \neg \Box p$
+	\item $\Box \bot$
+	\item $\Diamond \Box \bot \wedge \neg \Box \bot$
+	\item $\neg \Box \bot \wedge \Box \Box \bot$
+	\item $\Diamond p \wedge \Diamond \Box \bot$
+\end{enumerate}
+\end{multicols}	
+\end{exercise}
+
+\begin{exercise} Постройте контрмодели для следующих формул в логике $S4$:
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $\Diamond p \to \Box \Diamond p$
+		\item $\Box \Diamond p \to \Diamond \Box p$
+		\item $\Diamond \Box p \to \Box \Diamond p$
+		\item $\Box \Diamond p  \to \Box \Diamond \Box p$
+	    \item $\Diamond \Box p  \to \Box \Diamond \Box p$
+		\item $\Diamond p \to \Diamond \Box \Diamond p$
+	\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\begin{exercise} Используя схему Скотта–Леммона, найдите ограничение на достижимость для следующих схем:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\Box p \to \Box \Box p$
+	\item $\Box \Box p \to \Box \Box \Box p$
+	\item $\Diamond \Box p \to \Box p$
+	\item $\Diamond  p \to \Box p$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\section{Расширения модальной логики}
+
+\subsection{ 2D семантика}
+\begin{exercise} Приведите пример интерпретации и подберите высказывание, которое было бы истинно (a) только в одной строке, (b) только в одном столбце, (с) только по диагонали и (d) во всех ячейках таблицы.
+\end{exercise}
+
+\subsection{Модальная логика предикатов}
+
+\begin{exercise} Рассмотрим две формулы:
+
+\begin{center}
+(a) $\exists x \Box P(x)$ и (b) $\Box \exists x P(x)$	
+\end{center}
+(1) Какая из них соответствует модальности \textit{de re}, а какая — \textit{de dicto}? (2) Если <<$\Box$>> интерпретировать как <<известно, что...>>, а <<$P(x)$>> как <<$x$ – убийца>>, то в чем заключается содержательное различие между этими формулами? (3) В каком логическом отношении находятся указанные формулы?
+\end{exercise}
+
+\begin{exercise} Рассмотрим следующие формулы:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $ \Box \forall x P(x) \to \forall x \Box P(x)$ 
+\item $ \forall x \Box P(x) \to \Box \forall x P(x)$ 
+\item $ \Diamond \forall x P(x) \to \forall x \Diamond P(x)$ 
+\item $ \forall x \Diamond P(x) \to \Diamond  \forall x P(x)$ 
+\item $ \Diamond \exists x P(x) \to \exists x \Diamond P(x)$	
+\item $ \exists x \Diamond P(x) \to \Diamond \exists x P(x)$
+\item $ \Box \exists x P(x) \to \exists x \Box P(x)$	
+\item $ \exists x \Box P(x) \to  \Box \exists x P(x)$ 	
+\end{enumerate}
+\end{multicols}
+
+Укажите: (a) вхождение модальности de re и de dicto; (b) какие формулы являются двойственными друг другу; (c) какие из формул являются <<формулами Баркан>>; (d) какие формулы можно считать логическими законами (с точки зрения интуиции).
+\end{exercise}
+
+\begin{exercise} Рассмотрим исчисление $FOL_{K}$ (к исчислению для классической логики предикатов $FOL$ добавляются аксиомы и правила вывода минимальной модальной логики $K$). Докажите в этом исчислении следующие теоремы:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\exists x \Box P(x) \to \Box \exists x P(x)$
+    \item $\Diamond \forall x  P(x) \to \forall x \Diamond P(x)$
+    \item $\exists x \Diamond P(x) \to \Diamond  \exists x P(x)$
+    \item $\Box \forall x  P(x) \to \forall x \Box P(x)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise} Постройте контрмодели  для следующих формул:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $ \Box \exists x P(x) \to \exists x \Box P(x)$
+    \item $ \forall x \Diamond P(x) \to \Diamond \forall x  P(x)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise} Докажите  в исчислении $FOL_{K}$
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $a = b \to \Box (a = b)$	
+	\item $\Diamond (a \not = b) \to a  \not = b$	
+\end{enumerate}
+\end{multicols}
+Каковы метафизические следствия указанных законов?
+\end{exercise}
+
+\begin{exercise} Докажите в исчислении $FOL_{KB}$
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\Diamond (a = b) \to a = b$	
+	\item $a \not = b \to \Box (a \not = b)$	  
+	\end{enumerate}
+\end{multicols}
+Каковы метафизические следствия указанных законов?
+\end{exercise}
+
+\section{Деонтическая логика}
+\begin{exercise} Cформулируйте:
+(1) парадокс Росса,
+(2) парадокс Прайора,
+(3) парадокс <<доброго самаритянина>>,
+(4) парадокс Чизхольма,
+(5) закон Канта.
+\end{exercise}
+
+\begin{exercise} Постройте доказательство для формулы, соответствующей парадоксу Росса (логика $K$).
+\end{exercise}
+
+\begin{exercise} В каких логических отношениях находятся следующие формулы ($KD$): $Op$, $Pp \wedge P \neg p $, $O \neg p$, $Pp$, $P \neg p$, $Op \vee O \neg p$?
+\end{exercise}
+
+\begin{exercise} Осуществите редукцию Андерсона для следующих формул: (1) $Fp \wedge O q$, (2) $F (p \wedge q) \wedge Pp \wedge Pq$.	
+\end{exercise}
+
+
+\section{Временная логика}
+\subsection{$K_t$ и ее расширения}
+\begin{exercise} Найдите доказательства для следующих теорем:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\vdash_{K_t} H (p \wedge q) \to Hp$
+	\item $\vdash_{K_t} G (p \wedge q) \to (G p \wedge Gq)$
+	\item $\vdash_{K_t} FHp \to GPp$
+	\item $\vdash_{K_t} PGp \to HFp$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\begin{exercise} Постройте временные модели, которые различаются следующей формулой (в логике $K_t$): 
+\begin{multicols}{3}
+\begin{enumerate}
+\item $Fp \wedge \neg Gp$
+\item $Pp \wedge \neg HPp$
+\item $Hp \wedge \neg H (p \wedge q)$
+\item $PFp \wedge \neg Fp$
+\item $PFp \wedge \neg Pp$
+\item $PFp \wedge \neg Pp \wedge \neg Fp$
+\item $Gp \wedge Hp \wedge \neg p$	
+\item $p \wedge H \neg p \wedge GPp$
+\item $HGp$
+\item $Gp$
+\item $FGp$
+\item $GFp$
+\item $GHp$
+\item $Hp$
+\item $PHp$
+\item $HPp$
+\item $Fp \wedge \neg GFp$
+\item $GFp \wedge \neg FGp$
+\item $FGp \wedge \neg Gp$
+\item $Gp \wedge \neg HGp$
+\item $HPp \wedge \neg PHp$
+\item $PH p \wedge \neg Hp$
+\item $Hp \wedge \neg GHp$
+\item $G \bot \vee FG\bot $
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\begin{exercise}[*]Постройте временные модели, которые различаются следующей формулой (в логике $K_t$):
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $Pp \wedge \neg PPp$
+    \item $Fp \wedge \neg FFp$
+    \item $(p \wedge Gp) \to PGp$
+    \item $(p \wedge Hp) \to FHp$
+	\item $H \neg p \wedge \neg p \wedge FGp \wedge F \neg p  \wedge GP \neg p$
+	\item $G\neg p \wedge \neg p \wedge PHp  \wedge P \neg p \wedge HF \neg p$
+\end{enumerate}
+\end{multicols}	
+\end{exercise}
+
+
+\begin{exercise}[*] Найдите доказательства для следующих теорем логики $K_t$:
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $GPGp \to GGPp$
+	\item $GPG p \equiv Gp$
+	\item $Gp \to GPp$
+	\item $HFHp \to Hp$
+	\item $HFHp \equiv Hp$
+	\item $Hp \to HFp$
+\end{enumerate}
+\end{multicols}
+
+\end{exercise}
+
+
+\begin{exercise}[**] Рассмотрим логику:
+\begin{center}
+$K_t + FGp \to  GFp + PHp \to  HPp$	
+\end{center}
+Докажите, что  $GHp \equiv  HGp$ – теорема этой логики.
+\end{exercise}
+
+\begin{exercise}[***] Докажите, что 
+\begin{center}
+$K_t + G p \to GGp  = K_t + Hp \to HH p$	
+\end{center}
+\end{exercise}
+
+\begin{exercise}[***] Рассмотрим следующую логику: 
+\begin{center}
+$Q_t = K_t + (4) +  (Lin_F) + (Lin_P) + (Dens) + (NoEnd) + (NoBeg)$,	
+\end{center}
+где:
+\begin{center}
+\begin{tabular}{ll}
+$(4)$ &  $Gp \to GGp$ или $Hp \to HHp$\\
+$(Lin_F)$ & $(Fp \wedge Fq) \to (F(p \wedge q) \wedge F(p \wedge  Fq) \wedge F(Fp \wedge q)) $ \\
+$(Lin_P)$ & $(Pp \wedge Pq) \to (P(p \wedge q) \wedge P(p \wedge  Pq) \wedge P(Pp \wedge q)) $ \\
+$(Dens)$ & $GGp \to Gp$ или $HHp \to Hp$ \\
+$(NoEnd)$  & $Gp \to Fp$ \\
+$(NoBeg)$  & $Hp \to Pp$
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item 
+Рассмотрим Таблицу \ref{Tab:1}, которая описывает редукцию <<трехэтажных>> модальностей в логике $Q_t$. В таблице строки соответствуют первому оператору, столбцы —второму и третьему, ячейка – результату редукции. Например, первая ячейка описывает следующую редукцию: $PGH \equiv GH$. 
+
+Заметим, что таблица описывает некоторые закономерности. Например, $\circ \, GH \equiv GH$, где $\circ \in \{G, H, P, F \}$, то есть, если цепочка модальных операторов заканчивается сочетанием $GH$, то любой оператор стоящий перед этим сочетанием может быть удален.
+
+ Глядя на эту таблицу, сформулируйте полное правило редукции модальных операторов в логике $Q_t$.\footnote{Подсказка-1: попробуйте использовать альтернативную нотацию: $\Box:= G$, $\Box^{-}:= H$, $\Diamond:= F$, $\Diamond^{-}:= P$; подсказка-2: докажите, что $GH \equiv HG$ и $FP \equiv PF$.}
+\item  Найдите доказательства для всех теорем, соответствующих описываемым таблицей редукциям: $\vdash_{Q_t} PGHp \equiv GHp$, $\vdash_{Q_t} PFHp \equiv PHp$ и т.д.
+\end{enumerate}
+
+
+\begin{center}
+\begin{table}[hbt]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+    & $GH$ & $FH$ & $PH$ & $HP$ & $GP$ & $FP$ & $HF$ & $GF$ & $FG$ & $PG$ \\ \hline
+$P$ & $GH$ & $PH$ & $PH$ & $HP$ & $P$  & $FP$ & $FP$ & $GF$ & $FG$ & $PG$ \\ \hline
+$H$ & $GH$ & $H$  & $PH$ & $HP$ & $HP$ & $FP$ & $HF$ & $GF$ & $FG$ & $HG$ \\ \hline
+$F$ & $GH$ & $FH$ & $PH$ & $HP$ & $FP$ & $FP$ & $F$  & $GF$ & $FG$ & $FG$ \\ \hline
+$G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hline
+\end{tabular}
+ 
+\caption{Редукция <<трехаэтажных>> модальностей в логике $Q_t$.} \label{Tab:1}
+\end{table}
+\end{center}
+
+\end{exercise}
+
+
+\begin{exercise}[**]
+Найдите доказательства для импликативных теорем в логике $Q_t$, см.: Рис.~\ref{fig:6}. Для <<отсутствующих>> импликаций постройте контрмодели. 
+
+\begin{figure}[hbt]
+\begin{center}
+\begin{tikzpicture}[scale=.6,>=stealth',shorten >=1pt, auto,  main node/.style={font=\sffamily\footnotesize}]
+\node[main node] (1) at (2,0) {$.$}; 
+\node[main node] (2) at (-1,4.5)  {$H$};
+\node[main node] (3) at (1,4.5) {$PH$};
+\node[main node] (4) at (3,4.5) {$HP$};
+\node[main node] (5) at (5,4.5)  {$P$};
+\node[main node] (6) at (-1,-4.5) {$G$};
+\node[main node] (7) at (1,-4.5)  {$FG$};
+\node[main node] (8) at (3,-4.5)  {$GF$};
+\node[main node] (9) at (5,-4.5)   {$F$};
+\node[main node] (10) at (-4,3.5)  {$FH$};
+\node[main node] (11) at (-6,0) {$GH \equiv HG$};
+\node[main node] (12) at (-4,-3.5)  {$PG$};
+\node[main node] (13) at (8,3.5)  {$GP$};
+\node[main node] (14) at (10,0)    {$FP \equiv PF$};
+\node[main node] (15) at (8,-3.5)  {$HF$};
+
+%от GH к FP верхом
+\path[->] (11) edge (10); 
+\path[->] (10) edge (2); 
+\path[->] (2) edge (3); 
+\path[->] (3) edge (4); 
+\path[->] (4) edge (5); 
+\path[->] (5) edge (13); 
+\path[->] (13) edge (14);
+
+%от GH к FP низом
+\path[->] (11) edge (12); 
+\path[->] (12) edge (6); 
+\path[->] (6) edge (7);
+\path[->] (7) edge (8);
+\path[->] (8) edge (9);
+\path[->] (9) edge (15);
+\path[->] (15) edge (14);
+
+%центральный крест
+\path[->] (10) edge (1); 
+\path[->] (1) edge (13); 
+\path[->] (12) edge (1); 
+\path[->] (1) edge (15); 
+
+\path[->] (6) edge (13); 
+\path[->] (2) edge (15); 
+\path[->] (12) edge (5); 
+\path[->] (10) edge (9);  
+\end{tikzpicture}
+\end{center} 
+\caption{15 модальностей логики $Q_t$.} \label{fig:6} 	
+\end{figure}
+\end{exercise}
+
+\begin{exercise}[*] Выразите монадические темпоральные операторы $G\varphi$, $H\varphi$, $F\varphi$, $P\varphi$ через диадические $U\varphi \psi$ и $S \varphi \psi$.
+\end{exercise}
+
+
+\subsection{Логика ветвящегося времени}
+
+\begin{exercise} Постройте модели (в логике ветвящегося времени) для следующих формул:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $Fp \wedge \neg \Box Fp$
+\item $\Diamond F p \land G \neg p $
+\item $ P \Diamond p \land \neg \Diamond p $
+\item $ P \Diamond p \land  G \neg p $
+\item $ P \Diamond p \land \Box G \neg p $
+\item $P \Diamond F p \wedge \neg p \wedge \Box G \neg p $	
+\item $H \Diamond G p \wedge \neg p \wedge \Box G \neg p $	
+\item $\neg (\Diamond p \to (Pp \vee p \vee Fp))$
+\end{enumerate}
+\end{multicols}	
+\end{exercise}
+
+\section{STIT-логика}
+\begin{exercise} Постройте модели для следующих формул:
+\begin{enumerate}
+	\item $[cstit]_a p \wedge \neg [cstit]_b p$
+	\item $[cstit]_a p \wedge \neg [cstit]_a q$
+	\item $[cstit]_a p \wedge \neg [dstit]_a p$
+	\item $[dstit]_a p \wedge \neg [dstit]_a (p \vee q)$
+    \item $[dstit]_a (p \wedge q) \wedge \neg [dstit]_a p$
+	\item $\neg [cstit]_a p \wedge \Diamond [cstit]_a p $
+    \item $[cstit]_{ab} p \wedge \neg ([cstit]_a p \vee [cstit]_b p) $
+    \item $Op \wedge \neg O [cstit]_a p $
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[*]Постройте модели для следующих формул:
+\begin{enumerate}
+    \item $[cstit]_{abc} p \wedge \neg ([cstit]_{ab} p \vee [cstit]_{bc} p \vee  [cstit]_{ac} p) $
+    \item $\neg [cstit]_{ab} p \wedge \neg \Diamond [cstit]_a p \wedge \neg \Diamond [cstit]_b p \wedge \Diamond [cstit]_{ab} p  $
+    \item   $Op \wedge \Diamond [cstit]_a p \wedge \neg O[cstit]_a p$
+    \item $O [cstit]_{abc} p \wedge \neg (O[cstit]_{ab} p \vee O[cstit]_{bc} p \vee  O[cstit]_{ac} p) $
+\end{enumerate}
+\end{exercise}
+
+
+\section{Эпистемическая логика}
+
+\subsection{Динамическая эпистемическая логика}
+\begin{exercise}[**] При помощи динамической эпистемической логики решите следующую задачу:
+	
+Ведущий объявляет двум незнакомцам Эбби и Барри:
+<<Вы знаете день недели вы родились, но не день недели каждый другой родился. Тем не менее, я могу сказать вам, что вы родились в смежные дни, и что Барри не родился в
+понедельник.>> Затем он продолжает спрашивать Эбби и Барри поочередно, могут ли они вывести, какой день недели другой человек родился и получает такие ответы:
+
+Эбби: <<Нет>>.
+
+Барри:<<Нет>>.
+
+Эбби: <<Нет>>.
+
+Барри:<<Нет>>.
+
+Эбби: <<Нет>>.
+
+\begin{center}
+В какой день недели родилась Эбби?	
+\end{center}
+\end{exercise}
+
+\begin{exercise}[**] При помощи динамической эпистемической логики решите следующую задачу:
+
+Альберт, Бернард и Шерил подружились с Денисом, и захотели узнать, когда у него День Рождения. Денис дал им список из 20 возможных дат:  17 Февраля 2001, 16 Марта 2002, 13 Января 2003, 19 Января 2004, 13 Марта 2001, 15 Апреля 2002, 16 Февраля 2003, 18 Февраля 2004, 13 Апреля 2001, 14 Мая 2002, 14 Марта 2003, 19 Мая 2004, 15 Мая 2001, 12 Июня 2002, 11 Апреля 2003, 14 Июля 2004, 17 Июня 2001, 16 Августа 2002, 16 Июля 2003, 18 Августа 2004. 
+
+Затем Денис сказал Альберту, Бернарду и Шерил отдельно месяц, день и год рождения соответственно. Между ними состоялся следующий разговор. 
+
+Альберт: <<Я не знаю, когда у Дениса День Рождения, но я знаю, что Бернард не знает>>. 
+
+Бернард: <<Я до сих пор не знаю, когда у Дениса  День Рождения, но я знаю, что Шерил все еще не знает>>. 
+
+Шерил: <<Я до сих пор не знаю, когда у Дениcа День Рождения, но я знаю, что Альберт до сих пор не знает>>. 
+
+Альберт: <<Теперь я знаю, когда у Дениса День Рождения>>.
+
+Бернард: <<Теперь я тоже знаю>>.
+
+Шерил: <<Я тоже знаю>>.
+
+\begin{center}
+Итак, когда День Рождения Дениса?	
+\end{center}
+
+\end{exercise}
+
+
+
+
+\end{document}
