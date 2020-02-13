@@ -38,6 +38,30 @@
 
 \section{Модальная логика}
 \subsection{Модальные исчисления}
+\begin{exercise} Какие из следующих принципов следует принять или отвергнуть (с точки зрения интуиции):
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\Box (p \wedge q) \equiv (\Box p \wedge \Box q)$
+\item $\Box (p \to q) \to (\Box p \to \Box q)$
+\item $(\Diamond p \wedge \Diamond q) \to \Diamond (p \wedge q)$
+\item $\Box p \to p$
+\item $\Box p \to \Diamond p$
+\item $\neg \Box \bot$	
+\item $\Box p \to \Box \Box p$
+\item $p \to \Box \Diamond p$
+\item $\Diamond p \to \Box \Diamond p$
+\item $\Diamond \Box p \to \Box \Diamond p$
+\item $\Box (\Box p \to p)$
+\item $\Box (\Box p \to p) \to \Box p$
+\item $\Box p \to \Box \Diamond \Box p$
+ \item $\Diamond \Box \Diamond p \to \Diamond p$
+\end{enumerate}
+\end{multicols}
+
+если модальный оператор <<$\Box$...>> интерпретировать как
+ (a) <<необходимо, что ...>>, (b) <<обязательно, что ...>>, (с) <<всегда будет, что ...>>, (d) <<агент $x$ знает, что ...>>, (e) <<агент $x$ считает, что ...>>, (f) <<существует доказательство, что... >>, (g) <<хорошо, что ....>>? Как будет читаться двойственный оператор $\Diamond p: = \neg \Box \neg p$ в каждом из этих случаев?
+\end{exercise}
+
 \begin{exercise}
 Докажите в исчислении $K$ следующие теоремы:
 \begin{multicols}{2}
@@ -49,7 +73,6 @@
   \item $\Diamond (p \lor q) \equiv (\Diamond p \vee \Diamond q)$
   \item $(\Box p \to \Diamond q) \equiv \Diamond (p \to q)$
   \item $\Diamond (p \wedge q) \to \Diamond p$
-
   \item $\Box (p \to q) \to (\Diamond p \to \Diamond q)$
 \end{enumerate}	
 \end{multicols}
@@ -692,7 +715,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 Шерил: <<Я до сих пор не знаю, когда у Дениcа День Рождения, но я знаю, что Альберт до сих пор не знает>>. 
 
-Альберт: <<Теперь я знаю, когда у Дениса День Рождения>>.
+Альберт: <<Теперь я знаю, когда у Денса День Рождения>>.
 
 Бернард: <<Теперь я тоже знаю>>.
 
