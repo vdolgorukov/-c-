@@ -12,7 +12,7 @@
 \usetikzlibrary{arrows}
 \definecolor{HSEblue}{cmyk}{1,0.66,0,0.02}
 \tikzset{modal/.style={>=stealth',shorten >=1pt,auto, node distance=1.5cm, thick},
-         world/.style={circle,draw,minimum size=1.5cm,fill=HSEblue!10},
+         world/.style={circle,draw,minimum size=1.5cm,fill=HSEblue!10},https://www.overleaf.com/project/5e21e3c7f9964d0001fadc2d
          worldr/.style={circle,draw,minimum size=1.5cm,fill=red!15},
          worldo/.style={circle,draw,minimum size=1.5cm,fill=orange!15},
          worldg/.style={circle,draw,minimum size=1.5cm ,fill=green!15},
@@ -553,15 +553,16 @@ $(NoBeg)$  & $Hp \to Pp$
 \item 
 Рассмотрим Таблицу \ref{Tab:1}, которая описывает редукцию <<трехэтажных>> модальностей в логике $Q_t$. В таблице строки соответствуют первому оператору, столбцы —второму и третьему, ячейка – результату редукции. Например, первая ячейка описывает следующую редукцию: $PGH \equiv GH$. 
 
-Заметим, что таблица описывает некоторые закономерности. Например, $\circ \, GH \equiv GH$, где $\circ \in \{G, H, P, F \}$, то есть, если цепочка модальных операторов заканчивается сочетанием $GH$, то любой оператор стоящий перед этим сочетанием может быть удален.
+Заметим, что таблица описывает некоторые закономерности. Например, $\circ \, GH \equiv GH$, где $\circ \in \{G, H, P, F \}$, то есть, если цепочка модальных операторов заканчивается сочетанием $GH$, то любой оператор, стоящий перед этим сочетанием, может быть удален.
 
  Глядя на эту таблицу, сформулируйте полное правило редукции модальных операторов в логике $Q_t$.\footnote{Подсказка-1: попробуйте использовать альтернативную нотацию: $\Box:= G$, $\Box^{-}:= H$, $\Diamond:= F$, $\Diamond^{-}:= P$; подсказка-2: докажите, что $GH \equiv HG$ и $FP \equiv PF$.}
 \item  Найдите доказательства для всех теорем, соответствующих описываемым таблицей редукциям: $\vdash_{Q_t} PGHp \equiv GHp$, $\vdash_{Q_t} PFHp \equiv PHp$ и т.д.
 \end{enumerate}
 
 
-\begin{center}
+
 \begin{table}[hbt]
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
     & $GH$ & $FH$ & $PH$ & $HP$ & $GP$ & $FP$ & $HF$ & $GF$ & $FG$ & $PG$ \\ \hline
@@ -570,10 +571,9 @@ $H$ & $GH$ & $H$  & $PH$ & $HP$ & $HP$ & $FP$ & $HF$ & $GF$ & $FG$ & $HG$ \\ \hl
 $F$ & $GH$ & $FH$ & $PH$ & $HP$ & $FP$ & $FP$ & $F$  & $GF$ & $FG$ & $FG$ \\ \hline
 $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hline
 \end{tabular}
- 
+\end{center} 
 \caption{Редукция <<трехаэтажных>> модальностей в логике $Q_t$.} \label{Tab:1}
 \end{table}
-\end{center}
 
 \end{exercise}
 
@@ -681,22 +681,219 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 \section{Эпистемическая логика}
 
+\subsection{Эпистемическая логика (статическая)}
+
+\begin{exercise} Постройте модели, которые бы различались следующей формулой:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $p \wedge \neg K_a p$
+\item $K_a p \wedge \neg K_a q$
+\item $K_a p \wedge \neg K_b p$
+\item $K_a p \wedge \neg K_a q \wedge K_b q \wedge \neg K_b p$
+\item $E_{ab}p \wedge K_a K_b p \wedge \neg K_b K_a p$	
+\item $E_{ab}p \wedge \neg K_a K_b p \wedge \neg K_b K_a p$
+\item $E^2_{ab}p \wedge K_a K_b K_a p \wedge \neg K_b K_a K_b p $
+\item $E^2_{ab}p \wedge \neg K_a K_b K_a p \wedge \neg K_b K_a K_b p $
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\begin{exercise} \label{Letter} Постройте модель, которая бы наилучшим образом описывала следующую ситуацию:
+\begin{enumerate} 
+\item  На столе лежит конверт, в котором возможно лежит письмо (пусть $p:=$ <<в конверте лежит письмо>>). Ни Аня, ни Борис не знают пуст конверт или нет.
+\item Аня и Борис вместе открывают конверт.
+\item Аня на глазах Бориса открывает конверт, но не показывает его содержимое Борису.
+\item Борис вышел в другую комнату, а затем вернулся. За это время Аня могла посмотреть содержимое конверта.
+\item Сначала Борис вышел в другую комнату и вернулся, а потом Аня вышла в другую комнату и вернулась. Каждый из них мог открыть конверт. \label{LetterCube}
+\end{enumerate}
+\end{exercise} 
+
+\begin{exercise} Найдите формулы которые различают модели в упражнении \ref{Letter}.\footnote{ Важно, что речь идет именно о модели, а не \textit{отмеченной} модели, то есть, формула должна выполнятся в модели целиком (в каждом из миров этой модели).} Используйте оператор общего знания $C_{ab}$\footnote{ Также удобно использовать следующее сокращение: $K^{?}_{i} \varphi:= K_i \varphi \vee K_i \neg \varphi$.}.
+\end{exercise}
+
+\begin{exercise} Постройте модели, которые бы различались следующей формулой:
+\begin{enumerate}
+	\item $B_a p \wedge \neg p$
+	\item $B_a p \wedge \neg K_a p \wedge  p$
+	\item $\neg B_a p \wedge \neg B_a \neg p$
+	\item $\neg B_a p \wedge \neg B_a q \wedge B_a (p \to q)$
+    \item $\neg K_a q \wedge B_a q \wedge \neg B_a p \wedge \neg B_a \neg p$
+    \item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge  B_a p \wedge B_b \neg p$
+    \item $K_a p \wedge \neg K^{?}_a q \wedge B_a q \wedge K_b q \wedge \neg K^{?}_b p \wedge B_b \neg p  $
+    \item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge  B_a p \wedge B_a \neg p \wedge B_b K_a p$
+	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b p  \wedge B_b B_a \neg p$ 
+	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b p  \wedge B_b (\neg B_a \neg p \wedge \neg B_a p)$ 
+	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b \neg p  \wedge B_b B_a \neg p \wedge B_a B_b p$ 
+	\item $\neg B^{q}_{a} p \wedge  B_{a} (q \to p)$ 
+\end{enumerate}	
+\end{exercise}
+
+
+\begin{exercise}
+Постройте модели для выполнимых формул, для невыполнимых – докажите, что это невозможно:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $E_{abc} \varphi \wedge \neg K_aK_b \varphi$
+\item $E_{ab} \varphi \wedge \neg E^2_{ab} \varphi $
+\item $D_{ab} \varphi \wedge \neg K_a \varphi  \wedge \neg K_b \varphi $ 
+\item $C_{ab} \varphi \wedge \neg K_c \varphi$ 
+\item $E^{2}_{ab}\varphi \wedge \neg C_{ab} \varphi$
+\item  $ \hat{K}_a \varphi  \wedge \neg \varphi $
+\item $K_a \varphi  \wedge  ( \varphi \to \psi)  \wedge \neg K_a \psi $
+\item $K_a \varphi  \wedge  K_a ( \varphi \to \psi)  \wedge \neg K_a\psi $ 
+\item $ \hat{K}_a \varphi  \wedge \hat{K}_a \neg \varphi  $
+\item $ K_a K_b \varphi \wedge \neg K_a \varphi$
+\item $ K_a K_b \varphi  \wedge \neg  K_b K_a \varphi  $
+\item $ K_b K_a \varphi  \wedge K_a K_b \varphi \wedge   \neg K_a K_b  K_a \varphi  $ 
+\item $C_{ab} p \wedge  C_{ac}  p \wedge C_{bc}  p \wedge \neg C_{abc} p$
+\item $B_a K_a \varphi \wedge B_a \neg \varphi $
+\item $B^p_a r \wedge B^q_a r \wedge \neg B^{p \wedge q}_a r $
+\item $\neg B^p_a r  \wedge B^{p \wedge q}_a r $
+\item $\neg B^{\psi}_{a}\varphi \wedge  B_{a} (\psi \to \varphi)$
+\item $B^{\psi}_{a}\varphi \wedge  \neg B_{a} (\psi \to \varphi)$
+\item $B^{+}_a \varphi \wedge B^{s}_a \varphi$
+\item $B^{+}_a \varphi \wedge \neg B^{s}_a \varphi$
+\item $\neg  B^{+}_a \varphi \wedge B^{s}_a \varphi$
+\item $\neg  B^{+}_a \varphi \wedge \neg  B^{s}_a \varphi \wedge B_a \varphi$
+\item $B^s_a p \wedge B^s_a q \wedge \neg B^s_a (p \wedge q)$
+\item $\neg B^s_a p \wedge B^s_a (p \wedge q)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise} Вспомните сказку о новом платье короля. Какая формула наилучшим образом описывает эту ситуацию?
+\end{exercise}
+
+\begin{exercise}[***] Какие аксиомы (из набора $K$, $T$, $D$, $B$, $4$, $5$) являются корректными для операторов <<$K_i$>>, <<$K_i^?$>>, <<$B^{+}_i$>>, <<$B^s_i$>>, <<$B^{\psi}_i$>>  Докажите. При помощи кругов Эйлера укажите в каких отношениях находятся множества всех моделей, в которых истинна формула $\Box p$, где $\Box$ – один из указанных операторов.   
+\end{exercise}
+
+\begin{exercise}[***] Постройте модель, которая бы наилучшим образом описывала ситуацию аналогичную ситуации в \ref{Letter}.\ref{LetterCube} только с тремя агентами — Аня, Борис и Семен. Агенты выходят по одному, оставшиеся два агента всегда действуют вместе, что является общим знанием для всех троих.	
+\end{exercise}
+
+
+\begin{exercise}[*] Постройте модель, которая бы наилучшим образом описывала следующую ситуацию:
+
+\begin{center}
+ Аня рассказала Борису страшный секрет, Борис рассказал его Семену, но попросил Семена не говорить Ане о факте их разговора. Семен рассказал Ане, что Борис попросил не говорить ей о факте его разговора с ним.	
+\end{center}
+
+	Знает ли Аня, что Семен знает, что Борис знает, что Аня знает страшный секрет?
+\end{exercise}
+
+
+\begin{exercise}[***] Экономист А.~Бранденбургер и математик Х.~Кайслер сформулировали интересный парадокс – следующее сочетание доксатических установок невозможно:
+\begin{center}
+	<<Ann believes that Bob assumes that Ann believes that Bob’s assumption is wrong>>.\footnote{См.: \textit{Brandenburger A., Keisler H.J.} An Impossibility Theorem on Beliefs in Games // Studia Logica. 2006. Vol. 84, № 2. P. 211–240.}	
+\end{center}
+Попытайтесь средствами эпистемической и доксатической логики продемонстрировать парадоксальность данного высказывания.
+\end{exercise}
+
+
+
 \subsection{Динамическая эпистемическая логика}
+
+%TODO карты (просто построить модель по описанию ситуации)
+%TODO мудрецы в шляпах
+%TODO аксиомы редукции
+
+\begin{exercise} При помощи динамической эпистемической логики решите следующую задачу:
+
+Аня, Борис и Семен вернулись с прогулки. Папа им говорит: хотя бы у одного из вас  чумазый лоб. Сейчас я Вам буду задавать вопросы, тот, кто догадается чумазый он или нет – должен всем сказать, что он догадался (но не говорить какой он).
+
+\begin{enumerate}
+	\item 
+\begin{description}
+\item Папа: <<Кто-то из вас знает, чумазый он или нет?>> 
+\item Дети: <<Нет!>>  
+\item Папа:  <<А теперь?>>  
+\item Аня:   <<Я знаю!>>   
+\item Борис: <<И я знаю!>>  
+\item Семен: <<Ну тогда все понятно: я -\texttt{...}!>> 
+\end{description}
+\begin{center}
+Чумазый Семен или нет? А Борис и Аня? Как они догадались?	
+\end{center}
+
+\item 
+
+\begin{description}
+\item Папа: <<Кто-то из вас знает, чумазый он или нет?>> 
+\item Дети: <<Нет!>>  
+\item Папа:  <<А теперь?>>  
+\item Дети: <<Нет!>>   
+\item Папа:  <<А теперь?>>  
+\item Дети: <<Да!>>   
+\end{description}
+\end{enumerate}
+
+\begin{center}
+Как они догадались?	
+\end{center}
+\end{exercise}
+
+\begin{exercise} При помощи динамической эпистемической логики решите следующую задачу:
+
+Альберт и Бернард только что познакомились с Шерил, и захотели узнать, когда у нее день рождения. Шерил перечислила список из 10 возможных дат: 
+
+\begin{multicols}{3}
+\begin{itemize}
+\item 15 мая
+\item 16 мая
+\item 19 мая
+\item 17 июня
+\item 18 июня 
+\item 14 июля 
+\item 16 июля 
+\item 14 августа
+\item 15 августа 
+\item 17 августа.	
+\end{itemize}
+\end{multicols}
+ Потом Шерил сказала Бернарду только день ее рождения, а Альберту — месяц.  
+ 
+ \begin{description}
+ \item 	 <<Я не знаю, когда у Шерил день рождения, но я точно знаю, что Бернард тоже не знает>>, — сказал Альберт.
+ \item <<Сначала я не знал, когда у Шерил день рождения, но теперь я знаю>>, — возразил Бернард.
+ \item На это Альберт ответил: <<Тогда я тоже знаю, когда у Шерил День рождения>>. 
+ \end{description}
+
+ \begin{center}
+ Когда же у Шерил день рождения?  	
+ \end{center}
+
+\end{exercise}
+
+
+\begin{exercise}[**] При помощи динамической эпистемической логики решите следующую задачу:
+
+В баре сидят трое логиков. Официантка спрашивает у них : <<Все будут пиво?>>.
+\begin{description}
+\item Первый логик: <<Я не знаю!>>. 
+\item Второй логик: <<Я не знаю!>>. 
+\item Третий логик: <<Да!>>. 
+\end{description}
+
+ \begin{center}
+ Как они рассуждали?	
+ \end{center}
+ 
+\end{exercise}
+
+
 \begin{exercise}[**] При помощи динамической эпистемической логики решите следующую задачу:
 	
 Ведущий объявляет двум незнакомцам Эбби и Барри:
-<<Вы знаете день недели вы родились, но не день недели каждый другой родился. Тем не менее, я могу сказать вам, что вы родились в смежные дни, и что Барри не родился в
+<<Вы знаете день недели, в который вы родились, но не день недели, в который родился другой. Тем не менее, я могу сказать вам, что вы родились в смежные дни, и что Барри не родился в
 понедельник.>> Затем он продолжает спрашивать Эбби и Барри поочередно, могут ли они вывести, какой день недели другой человек родился и получает такие ответы:
 
-Эбби: <<Нет>>.
-
-Барри:<<Нет>>.
-
-Эбби: <<Нет>>.
-
-Барри:<<Нет>>.
-
-Эбби: <<Нет>>.
+\begin{description}
+\item Эбби: <<Нет>>. 
+\item Барри: <<Нет>>.
+\item Эбби: <<Нет>>. 
+\item Барри: <<Нет>>. 
+\item Эбби: <<Нет>>.
+\end{description}
 
 \begin{center}
 В какой день недели родилась Эбби?	
@@ -705,29 +902,205 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 \begin{exercise}[**] При помощи динамической эпистемической логики решите следующую задачу:
 
-Альберт, Бернард и Шерил подружились с Денисом, и захотели узнать, когда у него День Рождения. Денис дал им список из 20 возможных дат:  17 Февраля 2001, 16 Марта 2002, 13 Января 2003, 19 Января 2004, 13 Марта 2001, 15 Апреля 2002, 16 Февраля 2003, 18 Февраля 2004, 13 Апреля 2001, 14 Мая 2002, 14 Марта 2003, 19 Мая 2004, 15 Мая 2001, 12 Июня 2002, 11 Апреля 2003, 14 Июля 2004, 17 Июня 2001, 16 Августа 2002, 16 Июля 2003, 18 Августа 2004. 
-
-Затем Денис сказал Альберту, Бернарду и Шерил отдельно месяц, день и год рождения соответственно. Между ними состоялся следующий разговор. 
-
-Альберт: <<Я не знаю, когда у Дениса День Рождения, но я знаю, что Бернард не знает>>. 
-
-Бернард: <<Я до сих пор не знаю, когда у Дениса  День Рождения, но я знаю, что Шерил все еще не знает>>. 
-
-Шерил: <<Я до сих пор не знаю, когда у Дениcа День Рождения, но я знаю, что Альберт до сих пор не знает>>. 
-
-Альберт: <<Теперь я знаю, когда у Денса День Рождения>>.
-
-Бернард: <<Теперь я тоже знаю>>.
-
-Шерил: <<Я тоже знаю>>.
+Альберт, Бернард и Шерил подружились с Денисом, и захотели узнать, когда у него День Рождения. Денис дал им список из 20 возможных дат: 
+\begin{multicols}{3}
+\begin{itemize}
+\item 17 Февраля 2001
+\item 16 Марта 2002
+\item 13 Января 2003
+\item 19 Января 2004
+\item 13 Марта 2001
+\item 15 Апреля 2002
+\item 16 Февраля 2003
+\item 18 Февраля 2004
+\item 13 Апреля 2001
+\item 14 Мая 2002
+\item 14 Марта 2003
+\item 19 Мая 2004
+\item 15 Мая 2001
+\item 12 Июня 2002 
+\item 11 Апреля 2003
+\item 14 Июля 2004 
+\item 17 Июня 2001 
+\item 16 Августа 2002 
+\item 16 Июля 2003 
+\item 18 Августа 2004
+\end{itemize}
+\end{multicols}
+Затем Денис сказал Альберту, Бернарду и Шерил отдельно месяц, день и год рождения соответственно. Между ними состоялся следующий разговор: 
+\begin{description}
+\item Альберт: <<Я не знаю, когда у Дениса День Рождения, но я знаю, что Бернард не знает>>. 
+\item Бернард <<Я до сих пор не знаю, когда у Дениса  День Рождения, но я знаю, что Шерил все еще не знает>>. 
+\item Шерил: <<Я до сих пор не знаю, когда у Дениcа День Рождения, но я знаю, что Альберт до сих пор не знает>>. 
+\item Альберт: <<Теперь я знаю, когда у Денса День Рождения>>.
+\item Бернард: <<Теперь я тоже знаю>>.
+\item Шерил: <<Я тоже знаю>>.
+\end{description}
 
 \begin{center}
 Итак, когда День Рождения Дениса?	
 \end{center}
-
 \end{exercise}
 
 
+\begin{exercise}[**] Составьте новую задачу по типу задачи о Дне Рождения Шерил.
+\end{exercise}
+
+
+\begin{exercise} Опишите результат информационного обновления модели, см.: Рис. \ref{fig:7}:
+
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $\M^{!p}$
+	\item $\M^{!q}$
+	\item $\M^{!(p \wedge q)}$
+	\item $\M^{! (p \to q)}$
+	\item $\M^{\uparrow p}$ 
+    \item $\M^{\Uparrow p}$ 
+\end{enumerate}
+\end{multicols}
+	
+\begin{figure}[hbt] \caption{Информационное обновление} \label{fig:7}
+
+\begin{center}
+\begin{tikzpicture}[modal, node distance=3.3cm]
+\node[world] (1) [label=below:{$w_1$}] {$q$};
+\node[world] (2) [right of=1] [label=below:{$w_2$}]   {$p$};
+\node[world] (3) [right of=2] [label=below:{$w_3$}]  {$p, q$};
+\node[world] (4) [right of=3] [label=below:{$w_4$}]  {};
+\path[-] (1) edge node[below] {$ab$} (2);
+\path[-] (2) edge node[below] {$ab$} (3);
+\path[-] (3) edge node[below] {$ab$} (4);
+\path[->](1) edge[dashed,bend left]   node[below]{$a$}  (2);
+\path[->](2) edge[dashed,bend left]   node[below]{$a$}  (3);
+\path[->](3) edge[dashed,bend left]   node[below]{$a$}  (4);
+\path[->](4) edge[dashed,bend left]   node[below]{$b$}  (3);
+\path[->](3) edge[dashed,bend left]   node[below]{$b$}  (2);
+\path[->](2) edge[dashed,bend left]   node[below]{$b$}  (1);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{exercise}
+
+\begin{exercise} Опишите результат информационного обновления модели, см.: Рис. \ref{fig:8}:
+
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\M^{!p}$
+	\item $\M^{!q}$
+	\item $\M^{\uparrow p}$ 
+    \item $\M^{\Uparrow p}$ 
+\end{enumerate}
+\end{multicols}
+	
+\begin{figure}[hbt] \caption{Информационное обновление} \label{fig:8}
+
+\begin{center}
+\begin{tikzpicture}[modal, node distance=3.3cm]
+\node[world] (1) [label=below:{$w_1$}] {$q$};
+\node[world] (2) [right of=1] [label=below:{$w_2$}]   {$p$};
+\node[world] (3) [right of=2] [label=below:{$w_3$}]  {$p, q$};
+\node[world] (4) [right of=3] [label=below:{$w_4$}]  {};
+\path[-] (1) edge node[below] {$ab$} (2);
+\path[-] (2) edge node[below] {$ab$} (3);
+\path[-] (3) edge node[below] {$ab$} (4);
+\path[->](2) edge[dashed,bend right]   node[below]{$a$}  (1);
+\path[->](4) edge[dashed,bend right]  node[below]{$a$} (1);
+\path[->](2) edge[dashed,bend left]   node[below]{$a$}  (3);
+\path[->](3) edge[dashed,bend left]   node[below]{$a$}  (4);
+\path[->](4) edge[dashed,bend left]   node[below]{$b$}  (3);
+\path[->](3) edge[dashed,bend left]   node[below]{$b$}  (2);
+\path[->](2) edge[dashed,bend left]   node[below]{$b$}  (1);
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{exercise}
+
+
+\begin{exercise}[**] Динамическая эпистемическая логика обладает следующим интересным свойством: для любой формулы динамической эпистемической логики можно найти эквивалентную ей формулу статической эпистемической логики, пользуясь следующими аксиомами редукции:
+\begin{itemize}
+\item $[!\varphi]p \equiv ( \varphi \to p)$, где $p$ – пропозициональная переменная 
+\item $[! \varphi] \neg \psi \equiv  \varphi \to \neg [!\varphi]\psi$ 
+\item $[!\varphi]( \psi \wedge \chi)\equiv [!\varphi]\psi \wedge [!\varphi]\chi $ 
+\item $[! \varphi] K_i \psi \equiv \varphi \to K_i[!\varphi]\psi $ 
+\end{itemize} 
+
+Найдите результат редукции для следующих формул:
+\begin{multicols}{3}
+\begin{enumerate}
+\item $ [!p] (q \wedge  r) $
+\item $ [!K_a p] K_b q$
+\item $ [!p] (q \vee r) $
+\item $ [!p] K^{?}_a q $
+\item $[!K_a p] (q \wedge r)$		
+\item $[! \neg K_a p] K_b (q \wedge r)$	
+\end{enumerate}
+\end{multicols}
+
+\end{exercise}
+
+%TODO эпистемические и доксатические операторы и их свойства
+%TODO дистрибутивное знание и другие групповые операторы
+
+
+\section{Многозначные логики}
+
+\begin{exercise} Являются ли указанные формулы законами трехзначной логики Лукасевича?  
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\neg (p \wedge \neg p)$
+	\item $p \vee \neg p$
+	\item $p \to (q \vee \neg q)$
+	\item $p \to (p \vee \neg p)$
+	\item $(p \wedge \neg p) \to p$
+	\item $(p \to (p \to q)) \to (p \to q)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\section{Интуиционистская логика}
+\begin{exercise} Какие из указанных формул НЕ являются законами интуиционистской логики высказываний? (Постройте для таких формул контрмодели).
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\neg \neg p \to p$
+	\item $p \to \neg \neg p$
+	\item $p \vee \neg p$
+	\item $\neg p \vee \neg \neg p$
+	\item $\neg (p \wedge \neg p)$
+	\item $(p \to q) \to (\neg p \vee q)$
+	\item $(\neg p \vee q) \to (p \to q)$
+	\item $\neg (p \to q) \to (p \wedge \neg q)$
+	\item $(p \wedge \neg q) \to \neg (p \to q) $
+	\item $(p \to q) \to (\neg q \to \neg p)$
+	\item $(p \to \neg q) \to (q \to \neg p)$
+	\item $(\neg p \to q) \to (\neg q \to p)$
+	\item $(\neg p \to \neg q) \to (q \to p)$
+	\item $\neg (p \wedge q) \to (\neg p \vee \neg q)$
+    \item $(\neg p \vee \neg q) \to \neg (p \wedge q)$
+    \item $\neg (\neg p \vee \neg q) \to (p \wedge q)$
+    \item $(p \wedge q) \to \neg (\neg p \vee \neg q)$
+  	\item $\neg (p \vee q) \to (\neg p \wedge \neg q)$
+  	\item $(\neg p \wedge \neg q) \to \neg (p \vee q)$
+    \item $\neg  (\neg p \wedge  \neg q) \to (p \vee q)$
+    \item $(p \vee q) \to \neg  (\neg p \wedge  \neg q)$
+    \item $((p \to q) \to p) \to p $
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise} Найдите результат перевода в $S4$ для следующих формул интуиционистской логики высказываний:
+\begin{multicols}{3}
+\begin{enumerate}
+\item $\neg p$	
+\item $\neg \neg p$	
+\item $p \wedge \neg q$
+\item $p \to q$
+\item $p \to \neg \neg p$
+\item $\neg \neg p \to p  $
+\end{enumerate}
+\end{multicols}	
+\end{exercise}
 
 
 \end{document}
