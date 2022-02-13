@@ -12,7 +12,7 @@
 \usetikzlibrary{arrows}
 \definecolor{HSEblue}{cmyk}{1,0.66,0,0.02}
 \tikzset{modal/.style={>=stealth',shorten >=1pt,auto, node distance=1.5cm, thick},
-         world/.style={circle,draw,minimum size=1.5cm,fill=HSEblue!10},https://www.overleaf.com/project/5e21e3c7f9964d0001fadc2d
+         world/.style={circle,draw,minimum size=1cm,fill=HSEblue!10},
          worldr/.style={circle,draw,minimum size=1.5cm,fill=red!15},
          worldo/.style={circle,draw,minimum size=1.5cm,fill=orange!15},
          worldg/.style={circle,draw,minimum size=1.5cm ,fill=green!15},
@@ -22,14 +22,19 @@
          reflexive above/.style={->,loop,looseness=6,in=110,out=70},
          reflexive below/.style={->,loop,looseness=7,in=240,out=300},
          reflexive left/.style={->,loop,looseness=6,in=160 ,out=200},
-         reflexive right/.style={->,loop,looseness=6,in=20,out=340}}
-\tikzstyle{worldm}=[circle,draw,minimum size=0.5cm,fill=HSEblue!1]
+         reflexive right/.style={->,loop,looseness=6,in=20,out=340}
+         }
+
+\tikzstyle{worldm}=[circle,draw,minimumsize=0.5cm,fill=HSEblue!1]
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{exercise}[theorem]{Упражнение}
 \newcommand{\M}{\mathcal{M}}
 
 \title{Аспекты неклассических логик: упражнения}
-\date{\today}
+% \date{версия \today \\
+%актуальная версия тут \url{https://www.overleaf.com/read/wctttngrfkzb}
+%}
 \author{В.В.~Долгоруков (НИУ ВШЭ)}
 
 \begin{document}
@@ -71,19 +76,40 @@
   \item $\Box (p \wedge q) \to (\Box p \wedge \Box q)$
   \item $(\Box p \wedge \Box q) \to \Box (p \wedge q)$
   \item $\Diamond (p \lor q) \equiv (\Diamond p \vee \Diamond q)$
-  \item $(\Box p \to \Diamond q) \equiv \Diamond (p \to q)$
   \item $\Diamond (p \wedge q) \to \Diamond p$
+  \item $(\Box p \to \Diamond q) \equiv \Diamond (p \to q)$
   \item $\Box (p \to q) \to (\Diamond p \to \Diamond q)$
+  \item $(\Diamond p \wedge \Box (p \to q)) \to \Diamond q$
+  \item $(\Box p \wedge \Diamond q) \to \Diamond (p \wedge q) $
+  \item $\Box (p \vee q) \to (\Diamond p \vee \Box q)$ 
+  \item $(\Diamond p \wedge \Box q) \to \Diamond(p \wedge q) $
 \end{enumerate}	
 \end{multicols}
 \end{exercise}
+
+\begin{exercise}[*]
+Докажите в исчислении $K$ следующие теоремы:
+\begin{enumerate}
+ \item $ (\Box p \to \Diamond (q \to r)) \to (\Box q \to (\Box p \to \Diamond r))$
+ \item $(\Box p \wedge \Diamond (q \to r)) \to (\Box (p \to q ) \to  \Diamond (p \wedge r))$
+\end{enumerate}	
+\end{exercise}
+
+
+\begin{exercise}[*]
+Методом индукции докажите, что 
+\begin{center}
+$\vdash_{K} \Box (\varphi_1 \wedge \dots \wedge \varphi_n) \equiv (\Box \varphi_1 \wedge \dots \wedge \Box \varphi_n)$ для любого $n \geq 2$
+\end{center}
+\end{exercise}
+
 
 \begin{exercise}
 Докажите в исчислении $KT$ следующие теоремы:
 \begin{multicols}{2}
 	\begin{enumerate}
 		\item $\Box \Box p \to \Box p$
-		\item $\Box p \to \Diamond q$
+		\item $\Box p \to \Diamond p$
 		\item $\neg \Box \bot$
 		\item $\Diamond (p \to \Box p)$
 	\end{enumerate}
@@ -131,12 +157,30 @@
     \item $\vdash_{S5} (\Diamond p \wedge \Diamond q) \equiv \Diamond (\Diamond p \wedge q) $
     \item $\vdash_{K4} \Box (\Diamond p \vee q ) \to (\Diamond p \vee \Box q)$
     \item $\vdash_{K4} (\Box p \wedge \Diamond q) \to \Diamond (\Box p \wedge q) $
-    \item $\vdash_{S5} \Box (\Diamond p \vee q ) \equiv (\Diamond p \vee \Box q)$
-    \item $\vdash_{S5} (\Box p \wedge \Diamond q) \equiv \Diamond (\Box p \wedge q) $
     \item $\vdash_{S5} \Box (\Box p \to q) \vee \Box (\Box q \to p)$
 \end{enumerate}
 \end{multicols}
 \end{exercise}
+
+
+\begin{exercise}[*] Докажите следующие теоремы в исчислении $S5$:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\Box (p \vee \Box q) \equiv (\Box p \vee \Box q)$
+\item $\Box (p \vee \Diamond q) \equiv (\Box p \vee \Diamond q)$
+\item $\Diamond (p \wedge \Diamond q) \equiv (\Diamond p \wedge \Diamond q)$
+\item $\Diamond (p \wedge \Box q) \equiv (\Diamond p \wedge \Box q)$
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise}[**]
+Докажите, что 
+\begin{center}
+$ \vdash_{K5} \Box (\Box p \to p)$
+\end{center}
+\end{exercise}
+
 
 \begin{exercise}[**]
 Рассмотрим логику 
@@ -148,27 +192,106 @@ $S4.3 = S4 + (\Box (\Box p \vee q) \wedge \Box (p\vee \Box q)) \to (\Box p \vee 
 $\vdash_{S4.3} \Diamond \Box p \to \Box \Diamond p$.
 \end{exercise}
 
+\begin{exercise}[**] Логика Гёделя-Лёба ($GL$) получается добавлением к исчислению $K$ аксиомной схемы 
 
-\begin{exercise}[***] Логика Гёделя-Лёба ($GL$) получается добавлением к исчислению $K$ аксиомной схемы $\Box (\Box \varphi \to \varphi) \to \Box \varphi$. Докажите, что  $\vdash_{GL} \Box p \to \Box \Box p$.\footnote{ Задачи с *** предполагают, что на поиск решения может уйти много времени. Например, по поводу этой конкретной задачи в одном известном учебнике написано следующее: <<This exercise is only for readers who like syntactical manipulations and have a lot of time to spare>>, см.: \textit{Venema Y., Rijke M. de,  Blackburn P.} Modal Logic. Cambridge: Cambridge University Press, 2010. P.~37.}
-\end{exercise}
+\begin{center}
+$\Box (\Box \varphi \to \varphi) \to \Box \varphi$.	
+\end{center}
 
-\begin{exercise}[***] Докажите следующие теоремы в логике $K4$:
-\begin{multicols}{2}
 \begin{enumerate}
-\item $\Box \Diamond \Diamond p \equiv \Box \Diamond p$
-\item $\Diamond \Box \Box p \equiv \Diamond \Box \Box p$
-\item $\Box \Diamond p \equiv \Box \Diamond \Box \Diamond p$
-\item $\Diamond \Box p \equiv \Diamond \Box \Diamond \Box p$
+	\item Сформулируйте двойственную версию этой схемы.
+    \item Если в двойственной версии формулы Гёделя-Лёба модальные операторы понимать как временные, то как можно содержательно интерпретировать эту формулу?
+    \item Найдите доказательство для $\vdash_{GL} \Box \bot \vee \Diamond \Box \bot$
+    \item Докажите, что  $\vdash_{GL} \Box p \to \Box \Box p$\footnote{Начните поиск доказательства со следующей подстановки : $\varphi:= p \wedge \Box p$.}
 \end{enumerate}
-\end{multicols}
 \end{exercise}
+
+
+% \begin{exercise}[***] Логика Гёделя-Лёба ($GL$) получается добавлением к исчислению $K$ аксиомной схемы $\Box (\Box \varphi \to \varphi) \to \Box \varphi$. Докажите, что  $\vdash_{GL} \Box p \to \Box \Box p$.\footnote{ Задачи с *** предполагают, что на поиск решения может уйти много времени. Например, по поводу этой конкретной задачи в одном известном учебнике написано следующее: <<This exercise is only for readers who like syntactical manipulations and have a lot of time to spare>>, см.: \textit{Venema Y., Rijke M. de,  Blackburn P.} Modal Logic. Cambridge: Cambridge University Press, 2010. P.~37.}
+% \end{exercise}
+
+% \begin{exercise}[***] Докажите следующие теоремы в логике $K4$:
+% \begin{multicols}{2}
+% \begin{enumerate}
+% \item $\Box \Diamond \Diamond p \equiv \Box \Diamond p$
+% \item $\Diamond \Box \Box p \equiv \Diamond \Box \Box p$
+% \item $\Box \Diamond p \equiv \Box \Diamond \Box \Diamond p$
+% \item $\Diamond \Box p \equiv \Diamond \Box \Diamond \Box p$
+% \end{enumerate}
+% \end{multicols}
+% \end{exercise}
 
 	
-\begin{exercise}[***]
-	Докажите, что в  $K5$ все <<трехэтажные>> модальности сводятся к <<двухэтажным>>. 	
-\end{exercise}
+% \begin{exercise}[***]
+% 	Докажите, что в  $K5$ все <<трехэтажные>> модальности сводятся к <<двухэтажным>>. 	
+% \end{exercise}
 
 \subsection{Семантика Крипке}
+
+\begin{exercise}
+Какие из следующих формул выполняются в отмеченной модели ($M, w_1$)? (см.: Рис.~\ref{fig:0}).
+\begin{figure}[hbt]\caption{Модель $(\M, w_1)$} \label{fig:0}
+\begin{center}
+\begin{tikzpicture}[modal, node distance=2.5cm]
+		\node[world] (1) [label=below left:{$\underline{w_1}$}]{$p$};
+		\node[world] (2) [above right of=1, node distance=3.7cm] [label=below:{$w_2$}]{$q$};
+		\node[world] (3) [below right  of = 1, node distance=3.7cm] [label=below:{$w_3$}]{$p,q$};
+		\node[world] (5) [below right of = 2, node distance=2.5cm] [label=below:{$w_5$}]{$p, q$};
+		\node[world] (4) [above right of = 2,node distance=2.5cm] [label=below:{$w_4$}]{$p$};
+		\node[world] (6) [above right of = 3, node distance=2.5cm] [label=below:{$w_6$}]{$p,q$};
+		\node[world] (7) [below right of = 3, node distance=2.5cm] [label=below:{$w_7$}]{$p, q$};
+			
+		\path[->]    (1) edge  (2);
+		\path[->]    (1) edge  (3);
+		\path[->]    (2) edge  (4);
+		\path[->]    (2) edge  (5);
+		\path[->]    (3) edge  (6);
+		\path[->]    (3) edge  (7);
+\end{tikzpicture}
+\end{center}
+
+\begin{multicols}{4}
+\begin{enumerate}
+\item $p$
+\item $q$
+\item $p \wedge q$
+\item $p \to q$
+\item $q \to p$
+\item $\Box p$
+\item $\Box q$
+\item $\Box (p \wedge q)$ 
+\item $\Box (p \to q)$ 
+\item $\Box (q \to p)$ 
+\item $\Diamond p$
+\item $\Diamond  q$
+\item $\Diamond (p \wedge q)$ 
+\item $\Diamond (p \to q)$ 
+\item $\Diamond (q \to p)$ 
+\item $\Diamond \Diamond p$
+\item $\Diamond  \Diamond q$
+\item $\Diamond \Diamond (p \wedge q)$ 
+\item $\Diamond \Diamond (p \to q)$ 
+\item $\Diamond \Diamond (q \to p)$ 
+\item $\Box  \Box  p$
+\item $\Box  \Box  q$
+\item $ \Box  \Box  (p \wedge q)$ 
+\item $ \Box  \Box (p \to q)$ 
+\item $ \Box  \Box (q \to p)$ 
+\item $\Diamond   \Box  p$
+\item $\Diamond   \Box  q$
+\item $ \Diamond  \Box  (p \wedge q)$ 
+\item $ \Diamond  \Box (p \to q)$ 
+\item $ \Diamond  \Box (q \to p)$ 
+\item $\Box  \Diamond  p$
+\item $\Box \Diamond  q$
+\item $ \Box  \Diamond  (p \wedge q)$ 
+\item $ \Box  \Diamond (p \to q)$ 
+\item $ \Box  \Diamond (q \to p)$ 
+\end{enumerate}
+\end{multicols}
+\end{figure}
+\end{exercise}
+
 
 
 \begin{exercise} Укажите какие формулы выполняются в каких мирах в модели $\M_1$ (см.: Рис.\ref{fig:1}).\footnote{Онлайн-тренажер с аналогичными упражнениями тут: \\  \url{http://pacuit.io/modal/tutorial/}.}
@@ -299,7 +422,7 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
  \begin{tikzpicture}[modal, node distance=3.5cm]
 		\node[world] (1) [label=below right:{$w_1$}]{$p$};
 		\node[world] (2) [right of=1] [label=below right:{$w_2$}]{$p$};
-		\node[world] (3) [below of=1] [label=below right:{$w_2$}]{$p$};
+		\node[world] (3) [below of=1] [label=below right:{$w_3$}]{$p$};
 		\node[world] (12) [right of=2] [label=below left:{$w_1$}]{$p$};
 		\node[world] (22) [right of=12] [label=below left:{$w_2$}]{$p$};
 		\node[world] (32) [below of=22] [label=below left:{$w_3$}]{$p$};
@@ -342,7 +465,7 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
 \end{exercise}
 
 
-\begin{exercise} Используя схему Скотта–Леммона, найдите ограничение на достижимость для следующих схем:
+\begin{exercise}[*] Используя схему Скотта–Леммона, найдите ограничение на достижимость для следующих схем:
 \begin{multicols}{2}
 \begin{enumerate}
 	\item $\Box p \to \Box \Box p$
@@ -352,6 +475,7 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
 \end{enumerate}
 \end{multicols}
 \end{exercise}
+
 
 \section{Расширения модальной логики}
 
@@ -386,7 +510,7 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
 Укажите: (a) вхождение модальности de re и de dicto; (b) какие формулы являются двойственными друг другу; (c) какие из формул являются <<формулами Баркан>>; (d) какие формулы можно считать логическими законами (с точки зрения интуиции).
 \end{exercise}
 
-\begin{exercise} Рассмотрим исчисление $FOL_{K}$ (к исчислению для классической логики предикатов $FOL$ добавляются аксиомы и правила вывода минимальной модальной логики $K$). Докажите в этом исчислении следующие теоремы:
+\begin{exercise}[*] Рассмотрим исчисление $FOL_{K}$ (к исчислению для классической логики предикатов $FOL$ добавляются аксиомы и правила вывода минимальной модальной логики $K$). Докажите в этом исчислении следующие теоремы\footnote{Подсказка. Используйте следующий закон FOL: $(\exists x Sx \to Pa) \equiv \forall x (Sx \to Pa)$, а также правило генерализации : $\vdash A(x) \Rightarrow \; \vdash \forall x A(x)$}:
 \begin{multicols}{2}
 \begin{enumerate}
     \item $\exists x \Box P(x) \to \Box \exists x P(x)$
@@ -426,24 +550,8 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
 Каковы метафизические следствия указанных законов?
 \end{exercise}
 
-\section{Деонтическая логика}
-\begin{exercise} Cформулируйте:
-(1) парадокс Росса,
-(2) парадокс Прайора,
-(3) парадокс <<доброго самаритянина>>,
-(4) парадокс Чизхольма,
-(5) закон Канта.
+\begin{exercise}[**] Докажите, что в исчислении $FOL_{S5} $ выводима формула Баркан.
 \end{exercise}
-
-\begin{exercise} Постройте доказательство для формулы, соответствующей парадоксу Росса (логика $K$).
-\end{exercise}
-
-\begin{exercise} В каких логических отношениях находятся следующие формулы ($KD$): $Op$, $Pp \wedge P \neg p $, $O \neg p$, $Pp$, $P \neg p$, $Op \vee O \neg p$?
-\end{exercise}
-
-\begin{exercise} Осуществите редукцию Андерсона для следующих формул: (1) $Fp \wedge O q$, (2) $F (p \wedge q) \wedge Pp \wedge Pq$.	
-\end{exercise}
-
 
 \section{Временная логика}
 \subsection{$K_t$ и ее расширения}
@@ -510,9 +618,17 @@ $\Diamond \Diamond \Diamond \Box q$ &  &  &  &
 \begin{enumerate}
 	\item $GPGp \to GGPp$
 	\item $GPG p \equiv Gp$
-	\item $Gp \to GPp$
-	\item $HFHp \to Hp$
+	\item $HFHp \to HHPp$
 	\item $HFHp \equiv Hp$
+\end{enumerate}
+\end{multicols}
+
+\end{exercise}
+
+\begin{exercise}[*] Найдите доказательства для следующих теорем логики $Q_t$:
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $Gp \to GPp$
 	\item $Hp \to HFp$
 \end{enumerate}
 \end{multicols}
@@ -634,11 +750,16 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 \end{figure}
 \end{exercise}
 
-\begin{exercise}[*] Выразите монадические темпоральные операторы $G\varphi$, $H\varphi$, $F\varphi$, $P\varphi$ через диадические $U\varphi \psi$ и $S \varphi \psi$.
+\begin{exercise}[*] Выразите монадические темпоральные операторы $G\varphi$, $H\varphi$, $F\varphi$, $P\varphi$ через диадические $U\varphi \psi$ и $S \varphi \psi$.\footnote{
+Подсказка от У.Х. Одена: 
+\begin{quote}
+\textit{I'll love you, dear, I'll love you. \\  Till China and Africa meet, \\  And the river jumps over the mountain. \\ And the salmon sing in the street.}
+\end{quote}
+}
 \end{exercise}
 
 
-\subsection{Логика ветвящегося времени}
+\subsection{Логика ветвящегося времени (оккамистская)}
 
 \begin{exercise} Постройте модели (в логике ветвящегося времени) для следующих формул:
 \begin{multicols}{2}
@@ -655,8 +776,56 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 \end{multicols}	
 \end{exercise}
 
+\begin{exercise}[*] Докажите (семантически), что формула
+\begin{center}
+    $ P \varphi \to \Box P \Diamond \varphi$ 
+\end{center}
+общезначима.
+\end{exercise}
+
+\begin{exercise}[*] Какие из формул общезначимы в логике ветящегося времени. Докажите.
+\begin{multicols}{3}
+\begin{enumerate}
+    \item $ P \Diamond \varphi \to \Diamond P \varphi$
+    \item $ \Diamond P \varphi \to P \Diamond \varphi$
+    \item $G \Box \varphi \to \Box G \varphi$
+    \item $\Box G \varphi \to G \Box \varphi$
+    \item  $\Diamond P \varphi \to \Box P \Diamond \varphi$ 
+    \item $\varphi \to \Box P \Diamond F \varphi$
+    \item $\Diamond \varphi \to \Box P \Diamond F \varphi$
+     \item $\Box \varphi \to \Box P \Diamond F \varphi$
+     \item $\Box P \Diamond \varphi \to \Diamond  P \varphi$
+\end{enumerate}
+\end{multicols}
+
+\end{exercise}
+
+\begin{exercise}[**] Выведите следующую формулу из аксиом логики K.t, аксиом S5 для $\Box$ и аксиомы неветвления в прошлое $P \varphi \to \Box P \Diamond \varphi$
+$$G \Box \varphi \to \Box G \varphi$$
+
+\end{exercise}
+
+\section{Деонтическая логика}
+\begin{exercise} Cформулируйте:
+(1) парадокс Росса,
+(2) парадокс Прайора,
+(3) парадокс <<доброго самаритянина>>,
+(4) парадокс Чизхольма,
+(5) закон Канта.
+\end{exercise}
+
+\begin{exercise} Постройте доказательство для формулы, соответствующей парадоксу Росса (логика $K$).
+\end{exercise}
+
+\begin{exercise} В каких логических отношениях находятся следующие формулы ($KD$): $Op$, $Pp \wedge P \neg p $, $O \neg p$, $Pp$, $P \neg p$, $Op \vee O \neg p$?
+\end{exercise}
+
+\begin{exercise} Осуществите редукцию Андерсона для следующих формул: (1) $Fp \wedge O q$, (2) $F (p \wedge q) \wedge Pp \wedge Pq$.	
+\end{exercise}
+
 \section{STIT-логика}
 \begin{exercise} Постройте модели для следующих формул:
+\begin{multicols}{1}
 \begin{enumerate}
 	\item $[cstit]_a p \wedge \neg [cstit]_b p$
 	\item $[cstit]_a p \wedge \neg [cstit]_a q$
@@ -667,6 +836,8 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
     \item $[cstit]_{ab} p \wedge \neg ([cstit]_a p \vee [cstit]_b p) $
     \item $Op \wedge \neg O [cstit]_a p $
 \end{enumerate}
+\end{multicols}
+
 \end{exercise}
 
 \begin{exercise}[*]Постройте модели для следующих формул:
@@ -683,21 +854,37 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 \subsection{Эпистемическая логика (статическая)}
 
-\begin{exercise} Постройте модели, которые бы различались следующей формулой:
+\begin{exercise} Построить модель для следующих формул:
 \begin{multicols}{2}
 \begin{enumerate}
 \item $p \wedge \neg K_a p$
 \item $K_a p \wedge \neg K_a q$
 \item $K_a p \wedge \neg K_b p$
 \item $K_a p \wedge \neg K_a q \wedge K_b q \wedge \neg K_b p$
-\item $E_{ab}p \wedge K_a K_b p \wedge \neg K_b K_a p$	
+\end{enumerate}
+\end{multicols}
+\end{exercise}
+
+\begin{exercise} Построить модель для следующих формул (или доказать, что это невозможно)
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\neg K_a \varphi  \wedge K_b \varphi $
+	\item   $\neg K_a \varphi  \wedge \varphi $ 
+	\item $ K_a \varphi  \wedge \neg \varphi $
+	\item  $ \hat{K}_a \varphi  \wedge \neg \varphi $
+	\item $K_a \varphi  \wedge  ( \varphi \to \psi)  \wedge \neg K_a \psi $
+	\item $K_a \varphi  \wedge  K_a ( \varphi \to \psi)  \wedge \neg K_a\psi $ 
+	\item $ \hat{K}_a \varphi  \wedge \hat{K}_a \neg \varphi  $
+	\item $ K_a K_b \varphi \wedge \neg K_a \varphi$
+	\item $ K_a K_b \varphi  \wedge \neg  K_b K_a \varphi  $
+	\item $ K_b K_a \varphi  \wedge K_a K_b \varphi \wedge   \neg K_a K_b  K_a \varphi  $ 
+	\item $E_{ab}p \wedge K_a K_b p \wedge \neg K_b K_a p$	
 \item $E_{ab}p \wedge \neg K_a K_b p \wedge \neg K_b K_a p$
 \item $E^2_{ab}p \wedge K_a K_b K_a p \wedge \neg K_b K_a K_b p $
 \item $E^2_{ab}p \wedge \neg K_a K_b K_a p \wedge \neg K_b K_a K_b p $
 \end{enumerate}
 \end{multicols}
 \end{exercise}
-
 
 \begin{exercise} \label{Letter} Постройте модель, которая бы наилучшим образом описывала следующую ситуацию:
 \begin{enumerate} 
@@ -721,7 +908,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
     \item $\neg K_a q \wedge B_a q \wedge \neg B_a p \wedge \neg B_a \neg p$
     \item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge  B_a p \wedge B_b \neg p$
     \item $K_a p \wedge \neg K^{?}_a q \wedge B_a q \wedge K_b q \wedge \neg K^{?}_b p \wedge B_b \neg p  $
-    \item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge  B_a p \wedge B_a \neg p \wedge B_b K_a p$
+    \item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge  \neg B_a p \wedge \neg B_a \neg p \wedge B_b K_a p$
 	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b p  \wedge B_b B_a \neg p$ 
 	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b p  \wedge B_b (\neg B_a \neg p \wedge \neg B_a p)$ 
 	\item $\neg K^{?}_a p \wedge \neg K^{?}_b p \wedge B_a p \wedge B_b \neg p  \wedge B_b B_a \neg p \wedge B_a B_b p$ 
@@ -762,7 +949,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 \end{multicols}
 \end{exercise}
 
-\begin{exercise} Вспомните сказку о новом платье короля. Какая формула наилучшим образом описывает эту ситуацию?
+\begin{exercise}[**] Вспомните сказку о новом платье короля. Какая формула наилучшим образом описывает эту ситуацию?
 \end{exercise}
 
 \begin{exercise}[***] Какие аксиомы (из набора $K$, $T$, $D$, $B$, $4$, $5$) являются корректными для операторов <<$K_i$>>, <<$K_i^?$>>, <<$B^{+}_i$>>, <<$B^s_i$>>, <<$B^{\psi}_i$>>  Докажите. При помощи кругов Эйлера укажите в каких отношениях находятся множества всех моделей, в которых истинна формула $\Box p$, где $\Box$ – один из указанных операторов.   
@@ -949,7 +1136,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 \begin{exercise} Опишите результат информационного обновления модели, см.: Рис. \ref{fig:7}:
 
-\begin{multicols}{3}
+\begin{multicols}{2}
 \begin{enumerate}
 	\item $\M^{!p}$
 	\item $\M^{!q}$
@@ -984,7 +1171,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 
 \begin{exercise} Опишите результат информационного обновления модели, см.: Рис. \ref{fig:8}:
 
-\begin{multicols}{2}
+\begin{multicols}{4}
 \begin{enumerate}
 	\item $\M^{!p}$
 	\item $\M^{!q}$
@@ -1043,6 +1230,8 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 %TODO дистрибутивное знание и другие групповые операторы
 
 
+
+
 \section{Многозначные логики}
 
 \begin{exercise} Являются ли указанные формулы законами трехзначной логики Лукасевича?  
@@ -1089,7 +1278,7 @@ $G$ & $GH$ & $GH$ & $PH$ & $HP$ & $GP$ & $FP$ & $GF$ & $GF$ & $FG$ & $G$  \\ \hl
 \end{multicols}
 \end{exercise}
 
-\begin{exercise} Найдите результат перевода в $S4$ для следующих формул интуиционистской логики высказываний:
+\begin{exercise}[*] Найдите результат перевода в $S4$ для следующих формул интуиционистской логики высказываний:
 \begin{multicols}{3}
 \begin{enumerate}
 \item $\neg p$	
