@@ -144,24 +144,33 @@ $\vdash_{K} \Box (\varphi_1 \wedge \dots \wedge \varphi_n) \equiv (\Box \varphi_
 \begin{exercise}[*] Докажите следующие теоремы:
 \begin{multicols}{2}
 \begin{enumerate}
+	\item $\vdash_{KB} \Diamond \Box p \to \Box \Diamond p$
+ 	\item $\vdash_{K5} \Box \Diamond \Box p \to \Box \Box p$
 	\item $\vdash_{KT5} p \to \Box \Diamond p$
-	\item $\vdash_{KT5} \Box p \to \Box \Box p$
+	\item $\vdash_{KD4B} \Box p \to p $
 	\item $\vdash_{KT4B} \Diamond p \to \Box \Diamond p$
-	\item $\vdash_{KB4} \Diamond p \to \Box \Diamond p $
 	\item $\vdash_{KB5} \Box p \to \Box \Box p $
-    \item $\vdash_{KD4B} \Diamond p \to \Box \Diamond p$
-    \item $\vdash_{KD5B} \Diamond p \to \Box \Diamond p$
+    \item $\vdash_{KB4} \Diamond \Box p \to \Box \Diamond \Box p$
+	\item $\vdash_{KB4} \Diamond p \to \Box \Diamond p $
+    \end{enumerate}
+\end{multicols}
+\end{exercise}
+
+
+\begin{exercise}[*] Докажите следующие теоремы:
+\begin{multicols}{2}
+\begin{enumerate}
     \item $\vdash_{K5} \Box (\Box p \vee q ) \to (\Box p \vee \Box q)$
     \item $\vdash_{K5} (\Diamond p \wedge \Diamond q) \to \Diamond (\Diamond p \wedge q) $
     \item $\vdash_{S5} \Box (\Box p \vee q ) \equiv (\Box p \vee \Box q)$
     \item $\vdash_{S5} (\Diamond p \wedge \Diamond q) \equiv \Diamond (\Diamond p \wedge q) $
+    \item $\vdash_{KB} \Box (\Diamond p \to q) \to (p \to \Box q)$
     \item $\vdash_{K4} \Box (\Diamond p \vee q ) \to (\Diamond p \vee \Box q)$
     \item $\vdash_{K4} (\Box p \wedge \Diamond q) \to \Diamond (\Box p \wedge q) $
     \item $\vdash_{S5} \Box (\Box p \to q) \vee \Box (\Box q \to p)$
 \end{enumerate}
 \end{multicols}
 \end{exercise}
-
 
 \begin{exercise}[*] Докажите следующие теоремы в исчислении $S5$:
 \begin{multicols}{2}
@@ -825,7 +834,6 @@ $$G \Box \varphi \to \Box G \varphi$$
 
 \section{STIT-логика}
 \begin{exercise} Постройте модели для следующих формул:
-\begin{multicols}{1}
 \begin{enumerate}
 	\item $[cstit]_a p \wedge \neg [cstit]_b p$
 	\item $[cstit]_a p \wedge \neg [cstit]_a q$
@@ -836,7 +844,6 @@ $$G \Box \varphi \to \Box G \varphi$$
     \item $[cstit]_{ab} p \wedge \neg ([cstit]_a p \vee [cstit]_b p) $
     \item $Op \wedge \neg O [cstit]_a p $
 \end{enumerate}
-\end{multicols}
 
 \end{exercise}
 
